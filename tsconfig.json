@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "esnext",
+    "module": "ESNext",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noEmit": true,
+    "strict": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "paths": {
+      "src/*": ["src/*"],
+      "@types": ["src/types"],
+      "@config": ["src/config/index"],
+      "@models": ["src/models/index"],
+      "@routes": ["src/routes"],
+      "models/*": ["src/models/*"],
+      "utils/*": ["src/utils/*"],
+      "api/*": ["src/api/*"],
+      "hooks/*": ["src/hooks/*"],
+      "config/*": ["src/config/*"],
+      "store/*": ["src/store/*"],
+      "pages/*": ["src/pages/*"],
+      "components/*": ["src/components/*"],
+      "styles/*": ["src/styles/*"],
+      "images/*": ["src/assets/images/*"],
+      "assets/*": ["src/assets/*"],
+      "stubs/*": ["src/stubs/*"],
+      "services/*": ["src/services/*"]
+    }
+  },
+  "include": ["src", "tools", "./global.d.ts"],
+  "exclude": ["node_modules", "types"]
+}

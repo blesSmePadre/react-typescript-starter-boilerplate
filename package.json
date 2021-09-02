@@ -1,0 +1,256 @@
+{
+  "name": "react-starter-boilerplate",
+  "version": "2.3.1",
+  "description": "A starter boilerplate for an universal web application with the best development experience and best practices.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6.0",
+    "npm": ">=3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snphq/react-starter-boilerplate"
+  },
+  "keywords": [
+    "starter",
+    "boilerpate",
+    "universal",
+    "react",
+    "redux",
+    "react router v4",
+    "express",
+    "webpack v3",
+    "es6",
+    "code splitting",
+    "hot reloading",
+    "babel",
+    "postcss",
+    "performance optimizing"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn clean:build && yarn dev:manifest && yarn copy:favicon && better-npm-run dev",
+    "dev:spa": "yarn clean:build && yarn dev:manifest && yarn copy:favicon && yarn render:index && better-npm-run dev:spa",
+    "start:staging": "yarn build:assets:staging && yarn build:server:staging && yarn run:staging",
+    "start:production": "yarn build:assets:production && yarn build:server:production && yarn run:production",
+    "start:spa:staging": "yarn build:assets:staging && yarn render:index && yarn run:static",
+    "start:spa:production": "yarn build:assets:production && yarn render:index && yarn run:static",
+    "build:assets:staging": "yarn clean:build && yarn copy:favicon && better-npm-run build:staging",
+    "build:assets:production": "yarn clean:build && yarn copy:favicon && better-npm-run build:production",
+    "build:server:staging": "better-npm-run build:server:staging",
+    "build:server:production": "better-npm-run build:server:production",
+    "run:static": "better-npm-run run:static",
+    "run:staging": "better-npm-run run:staging",
+    "run:production": "better-npm-run run:production",
+    "analyze": "yarn clean:build && better-npm-run analyze",
+    "lint": "yarn lint:js && yarn lint:ts",
+    "lint:js": "eslint ./src ./tools",
+    "clean:build": "rimraf ./public/*",
+    "copy:favicon": "node ./tools/scripts/copy-favicon",
+    "render:index": "node ./tools/scripts/render-index",
+    "dev:manifest": "node ./tools/scripts/dev-manifest",
+    "lint:ts": "tsc --skipLibCheck",
+    "ts:watch": "tsc --skipLibCheck -w"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "node --inspect ./src/server/dev",
+      "env": {
+        "APP_MODE": "ssr",
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development",
+        "APP_ENV": "development",
+        "PORT": 5000
+      }
+    },
+    "dev:spa": {
+      "command": "node ./src/server/dev-spa.js",
+      "env": {
+        "APP_MODE": "spa",
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development",
+        "APP_ENV": "development",
+        "PORT": 5000
+      }
+    },
+    "run:staging": {
+      "command": "node ./server-build.js",
+      "env": {
+        "APP_MODE": "ssr",
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "APP_ENV": "staging",
+        "PORT": 8080
+      }
+    },
+    "run:production": {
+      "command": "node ./server-build.js",
+      "env": {
+        "APP_MODE": "ssr",
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "APP_ENV": "production",
+        "PORT": 8080
+      }
+    },
+    "run:static": {
+      "command": "node ./src/server/static",
+      "env": {
+        "PORT": 8080
+      }
+    },
+    "build:staging": {
+      "command": "webpack --progress --config ./webpack",
+      "env": {
+        "NODE_ENV": "production",
+        "APP_ENV": "staging",
+        "TARGET_ENV": "web"
+      }
+    },
+    "build:production": {
+      "command": "webpack --progress --config ./webpack",
+      "env": {
+        "NODE_ENV": "production",
+        "APP_ENV": "production",
+        "TARGET_ENV": "web"
+      }
+    },
+    "build:server:staging": {
+      "command": "webpack --progress --config ./webpack/server",
+      "env": {
+        "NODE_ENV": "production",
+        "APP_ENV": "staging",
+        "TARGET_ENV": "node",
+        "PORT": 8080
+      }
+    },
+    "build:server:production": {
+      "command": "webpack --progress --config ./webpack/server",
+      "env": {
+        "NODE_ENV": "production",
+        "APP_ENV": "production",
+        "TARGET_ENV": "node",
+        "PORT": 8080
+      }
+    },
+    "analyze": {
+      "command": "webpack --progress --hide-modules --config ./webpack",
+      "env": {
+        "NODE_ENV": "analyze"
+      }
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-numeric-separator": "^7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@babel/register": "^7.15.3",
+    "@google/markerclustererplus": "^5.1.0",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@types/compression": "^1.7.0",
+    "@types/express": "^4.17.3",
+    "@types/googlemaps": "^3.39.13",
+    "@types/hammerjs": "^2.0.36",
+    "@types/helmet": "^0.0.45",
+    "@types/history": "^4.7.3",
+    "@types/hpp": "^0.2.1",
+    "@types/html-minifier": "^3.5.3",
+    "@types/lodash": "^4.14.149",
+    "@types/memory-cache": "^0.2.1",
+    "@types/morgan": "^1.9.0",
+    "@types/multer": "^1.4.2",
+    "@types/nouislider": "^9.0.7",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-helmet": "^5.0.14",
+    "@types/react-redux": "^7.1.5",
+    "@types/react-router-config": "^5.0.1",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/serialize-javascript": "^1.5.0",
+    "@types/serve-favicon": "^2.5.0",
+    "@types/styled-components": "^5.0.1",
+    "@types/styled-system": "^5.1.9",
+    "@types/webpack-dev-middleware": "^3.7.0",
+    "@types/webpack-env": "^1.14.1",
+    "@types/webpack-hot-middleware": "^2.25.0",
+    "@types/wnumb": "^1.2.0",
+    "@types/yup": "^0.29.7",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "asset-require-hook": "^1.2.0",
+    "axios": "^0.18.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-styled-components": "^1.13.2",
+    "bowser": "^2.1.2",
+    "chalk": "^2.4.1",
+    "compression": "^1.7.2",
+    "compression-webpack-plugin": "^8.0.1",
+    "connected-react-router": "^6.9.1",
+    "core-js": "^3.16.4",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-import-resolver-webpack": "^0.13.1",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.12.0",
+    "history": "^4.9.0",
+    "hpp": "^0.2.2",
+    "html-minifier": "^4.0.0",
+    "lodash": "^4.17.15",
+    "memory-cache": "^0.2.0",
+    "morgan": "^1.9.0",
+    "normalizr": "^3.6.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-helmet": "^5.2.1",
+    "react-redux": "^7.1.0",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.4",
+    "reselect": "^4.0.0",
+    "serve-favicon": "^2.5.0",
+    "styled-components": "^5.1.1",
+    "styled-system": "^5.1.5",
+    "typescript": "^4.3.5",
+    "webpack": "^5.51.1",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-middleware": "^5.0.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-manifest-plugin": "^4.0.2",
+    "webpack-merge": "^5.8.0",
+    "webpack-notifier": "^1.13.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.12",
+    "better-npm-run": "^0.1.0",
+    "cross-spawn": "^6.0.5",
+    "css-loader": "^0.28.11",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-webpack-plugin": "^3.0.1",
+    "file-loader": "^1.1.11",
+    "fs-extra": "^8.1.0",
+    "http-proxy-middleware": "^1.0.5",
+    "opn": "^5.3.0",
+    "prettier": "^2.3.2",
+    "rimraf": "^2.6.2",
+    "url-loader": "^1.0.1"
+  }
+}
