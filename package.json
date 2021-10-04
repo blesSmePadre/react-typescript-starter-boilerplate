@@ -64,7 +64,7 @@
       }
     },
     "dev:spa": {
-      "command": "node ./src/server/dev-spa.js",
+      "command": "node ./src/server/dev-spa",
       "env": {
         "APP_MODE": "spa",
         "NODE_PATH": "./src",
